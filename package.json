@@ -1,0 +1,28 @@
+{
+  "name": "typescript-optional",
+  "version": "1.0.0",
+  "description": "Java's Optional Interface developed with TypeScript",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robert-Martins/TypeScript-Optional.git"
+  },
+  "keywords": [
+    "optional",
+    "typescript",
+    "java",
+    "interface"
+  ],
+  "author": "Robert-Martins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Robert-Martins/TypeScript-Optional/issues"
+  },
+  "homepage": "https://github.com/Robert-Martins/TypeScript-Optional#readme",
+  "devDependencies": {
+    "typescript": "^5.4.3"
+  }
+}
