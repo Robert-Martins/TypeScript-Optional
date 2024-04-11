@@ -11,6 +11,7 @@ import { isNull, nonNull, requireNonNull } from "./utils";
  * 
  */
 export class Optional<T> {
+    
     private value: T;
 
     private static EMPTY: Optional<any> = new Optional();
@@ -46,6 +47,16 @@ export class Optional<T> {
      */
     public static ofNullable<T>(value: T): Optional<T> {
         return isNull(value) ? this.EMPTY : new Optional(value);
+    }
+
+    /**
+     * 
+     * Creates an Optional with an Empty value
+     * 
+     * @returns {T} - Optional with an Empty value
+     */
+    public static empty<T>(): Optional<T> {
+        return new Optional();
     }
 
     /**
@@ -145,6 +156,18 @@ export class Optional<T> {
         return isNull(supplier) 
             ? Optional.EMPTY
             : supplier();
+    }
+
+    /**
+     * 
+     * Method that allows the execution of a method using the value in this if it is Present.
+     * 
+     * @param {value: T} value - The other value that may be used
+     * @returns {T} The value in this on the other value
+     */
+    public tap(callback: (value: T) => void): Optional<T> {
+        this.isPresent() && callback(this.value);
+        return this;
     }
 
     /**
