@@ -185,6 +185,19 @@ export class Optional<T> {
 
     /**
      * 
+     * Method that executes a supplier function if the value in this is Null or Undefined.
+     * 
+     * @param {() => Error} supplier - Supplier that will return the Error
+     * @returns {T} The value in this on the other value
+     */
+    public orElseThrow(supplier: () => Error): T {
+        if(this.isEmpty())
+            throw supplier();
+        return this.value;
+    }
+
+    /**
+     * 
      * Method that allows the execution of a function if the value in this isn't Null or Undefined.
      * 
      * @param {(value: T) => void} consumer - Consumer that may be applied to the value in this
