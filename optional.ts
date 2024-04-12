@@ -66,6 +66,8 @@ export class Optional<T> {
      * @returns {T} - Value wrapped by the Optional that may be null
      */
     public get(): T {
+        if(this.isEmpty())
+            throw new Error();
         return this.value;
     }
 
@@ -147,15 +149,15 @@ export class Optional<T> {
      * 
      * Method that allows the usage of another Optional if the value in this is Null or Undefined.
      * 
-     * @param {supplier: () => Optional<T>} supplier - Supplier that will return the other Optional
+     * @param {other: () => Optional<T>} other - The other Optional
      * @returns {Optional<T>} Null or the mapped value
      */
-    public or(supplier: () => Optional<T>): Optional<T> {
+    public or(other: Optional<T>): Optional<T> {
         if(this.isPresent())
             return this;
-        return isNull(supplier) 
+        return isNull(other) 
             ? Optional.EMPTY
-            : supplier();
+            : other;
     }
 
     /**
